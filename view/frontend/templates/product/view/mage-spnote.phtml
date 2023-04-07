@@ -1,0 +1,21 @@
+<?php 
+   $module_enable = $this->helper('Mage\SpecialNote\Helper\Data')->getConfig('specialnote/general/enable');
+   if ($module_enable == 1) :
+?>
+<div class="product option custom">
+   <input type="checkbox" id="add_special" name="notes">
+   <label for="other">Add special note</label>
+   <textarea id="spclnote" name="spclnote" rows="4" cols="50" style="display: none;">
+   </textarea>
+</div>
+<script>
+   require(['jquery'], function($) {
+      $(document).ready(function($) {
+         $('.product.custom #add_special').change(function(){
+             if ($(this).is(':checked')) $(".product.custom #spclnote").show();
+             else $(".product.custom #spclnote").hide();
+         }).change();
+      });
+   });
+</script>
+<?php endif; ?>
